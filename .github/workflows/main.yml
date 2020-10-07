@@ -2,10 +2,10 @@ name: CI
 
 on:
   push:
-    branches:    
+    branches:
     - '**'
   pull_request:
-    branches: 
+    branches:
     - '**'
 jobs:
   build:
@@ -29,12 +29,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
-      run: npm --prefix step-release-vis install
+      run: npm install
     - name: Lint
-      run: npm --prefix step-release-vis run lint
+      run: npm run lint
     - name: Build
-      run: npm --prefix step-release-vis run build -- --prod
+      run: npm run build -- --prod
     - name: Test
-      run: npm --prefix step-release-vis test -- --configuration=ci
+      run: npm test -- --configuration=ci
     - name: E2E
-      run: npm --prefix step-release-vis run e2e -- --configuration=ci
+      run: npm run e2e -- --configuration=ci
